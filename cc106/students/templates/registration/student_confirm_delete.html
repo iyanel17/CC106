@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirm Delete</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'registration/style.css' %}">
+</head>
+<body>
+    <h1>Confirm Deletion</h1>
+
+    <p>Are you sure you want to delete the record for <strong>{{ student.first_name }} {{ student.last_name }}</strong> (ID: {{ student.student_id }})?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="background: #a93226;">Yes, Confirm Delete</button>
+        <a href="{% url 'student_detail' student.pk %}" style="margin-left: 10px;">Cancel</a>
+    </form>
+</body>
+</html>

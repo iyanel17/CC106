@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Details</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'registration/style.css' %}">
+</head>
+<body>
+    <h1>Student Details</h1>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li style="color: green; font-weight: bold;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div style="background: white; padding: 20px; border: 1px solid #d7dee8; margin-bottom: 20px;">
+        <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+        <p><strong>First Name:</strong> {{ student.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ student.last_name }}</p>
+        <p><strong>Gender:</strong> {{ student.gender }}</p>
+        <p><strong>Date of Birth:</strong> {{ student.date_of_birth }}</p>
+        <p><strong>Contact No:</strong> {{ student.contact_no }}</p>
+    </div>
+
+    <p>
+        <a href="{% url 'student_update' student.pk %}">Edit Record</a> | 
+        <a href="{% url 'student_delete' student.pk %}">Delete Record</a> | 
+        <a href="{% url 'student_list' %}">Back to Student Directory</a>
+    </p>
+</body>
+</html>
